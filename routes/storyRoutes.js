@@ -12,7 +12,7 @@ router.get('/get-images', upload.array('image'), async (req, res, next) => {
       
       var cnt = await story.find().count();
       var message_response;
-      if( cnt<(page-1)*elements_per_page || page<=0 || elements_per_page<=0 )
+      if( cnt<=(page-1)*elements_per_page || page<=0 || elements_per_page<=0 )
       {
           throw("Invalid Page Reference");
       }

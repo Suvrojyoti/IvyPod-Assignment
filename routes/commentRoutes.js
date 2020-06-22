@@ -27,10 +27,9 @@ router.get('/get-comments', async(req, res, next) => {
 router.post('/post-comments', async(req,res,next) => {
 
     try {
-        // var found =await story.find({"id": req.body.storyID});
         var found =await story.findById(ObjectId(req.body.storyID));
         console.log(found);
-        // console.log(await story.find());
+        
         if(Object.keys(found).length === 0)
             throw ("Invalid Story ID");
         
@@ -42,7 +41,7 @@ router.post('/post-comments', async(req,res,next) => {
                 "Timestamp": Date()
             };
 
-            console.log(post_req);
+            // console.log(post_req);
             post_res = await comment.create(post_req);
 
             res.statusCode = 200;
